@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 10</title>
+</head>
+
+<body>
+    <label for="numero">Ingrese un número:</label><br>
+    <input type="number" name="numero" id="numero">
+    <button type="submit" onclick="agregar()">Ingresar</button>
+
+    <script>
+        var numeros = [];
+
+        function busqueda() {
+            let negativos = 0;
+            let positivos = 0;
+            let mult_quince = 0;
+            let sum_pares = 0;
+
+            numeros.forEach((item) => {
+                // Cuenta positivos y negativos
+                if (item > 0) {
+                    positivos += 1;
+                } else if (item < 0) {
+                    negativos += 1;
+                };
+
+                // cuenta multiplos de 15
+                if (item % 15 == 0) {
+                    mult_quince += 1;
+                };
+
+                // Suma pares
+                if (item % 2 == 0) {
+                    sum_pares += item;
+                };
+            });
+
+            document.write(`<p> Números ingresados: ${numeros.join(" ; ")} <br> 
+                        Cantidad de positivos: ${positivos} <br>
+                        Cantidad de negativos: ${negativos} <br>
+                        Cantidad de múltiplos de 15: ${mult_quince} <br>
+                        Sumatoria de números pares: ${sum_pares} <br> </p>`);
+        };
+
+        function agregar() {
+            let numero = Number(document.getElementById("numero").value);
+
+            numeros.push(numero);
+
+            if (numeros.length == 10) {
+                busqueda();
+            };
+        };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 7</title>
+</head>
+
+<body>
+    <label for="precio">Precio:</label>
+    <input type="text" pattern="[0-9]" name="precio" id="precio"> <br>
+    <label for="billetera">Billetera:</label>
+    <input type="text" name="billetera" pattern="[0-9 -]" id="billetera"> <br>
+    <button type="submit" onclick="agregar()">Enviar</button>
+
+
+    <script>
+        function agregar() {
+            let precio = Number(document.getElementById("precio").value)
+            let billetera = Number(document.getElementById("billetera").value)
+            let abonar = billetera - precio
+
+            alert(`Debe abonar: $${abonar}`)
+        };
+    </script>
+</body>
+
+</html>

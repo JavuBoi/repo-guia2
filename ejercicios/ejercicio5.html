@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5</title>
+</head>
+<body>
+    <label for="num1">Numero 1</label>
+    <input type="number" name="num1" id="num1"> <br>
+    <label for="num2">Numero 2</label>
+    <input type="number" name="num2" id="num2"> <br>
+    <label for="num3">Numero 3</label>
+    <input type="number" name="num3" id="num3"> <br>
+    <label for="num4">Numero 4</label>
+    <input type="number" name="num4" id="num4"> <br>
+    <button type="submit" onclick="calcular()">Calcular</button>
+
+    
+    <script>
+        function calcular(){
+            let num1 = Number(document.getElementById("num1").value);
+            let num2 = Number(document.getElementById("num2").value);
+            let num3 = document.getElementById("num3").value;
+            let num4 = document.getElementById("num4").value;
+
+            alert(`${num1} + ${num2} = ${num1+num2} \n${num3} * ${num4} = ${num3*num4}`);
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 11</title>
+</head>
+<body>
+    <form action="" onsubmit="retornar()">
+        <label for="menor">Menor:</label>
+        <input type="text" name="menor" id="menor" pattern="[0-9] {0, 999}"> <br>
+        <label for="mayor">Mayor:</label>
+        <input type="text" name="mayor" id="mayor" pattern="[0-9] {0, 999}"> <br>
+        <button type="submit">Enviar</button>
+    </form>
+
+    
+    <script>
+        function contador(mayor, menor) {
+            let conteo = [];
+
+            for (;menor <= mayor; menor++) {
+                conteo.push(menor);
+            };
+
+            return conteo.join(", ");
+        };
+
+        function retornar() {
+            let menor = Number(document.getElementById("menor").value);
+            let mayor = Number(document.getElementById("mayor").value);
+
+            if (menor < mayor) {
+                let conteo = contador(mayor, menor)
+                alert(conteo)
+            }else {
+                alert("Ingrese primero el número menor, luego el mayor.")
+            };
+        };
+    </script>
+</body>
+</html>

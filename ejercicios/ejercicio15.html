@@ -7,10 +7,48 @@
     <title>Ejercicio 15</title>
 </head>
 <body>
+    <form action="" onsubmit="return false;">
+        <select name="" id="procesador">
+            <option value="" disabled selected>-- Seleccione su procesador --</option>
+            <option value="400">Intel I3</option>
+            <option value="600">Intel I5</option>
+            <option value="800">Intel I7</option>
+        </select>
 
+        <select name="" id="monitor">
+            <option value="" disabled selected>-- Seleccione su monitor --</option>
+            <option value="250">Samsung 20'</option>
+            <option value="350">Samsung 22'</option>
+            <option value="550">Samsung 26'</option>
+        </select>
+
+        <select name="" id="disco_duro">
+            <option value="" disabled selected>-- Seleccione su disco duro --</option>
+            <option value="300">500 Gb</option>
+            <option value="440">1 Tb</option>
+            <option value="500">3 Tb</option>
+        </select>
+
+        <button type="" onclick="calcular()">Calcular</button>
+    </form>
     
-    <script>
+    <p id="texto"></p>
 
+    <script>
+        function calcular(){
+            let disco_duro = document.getElementById("disco_duro").value;
+            let monitor = document.getElementById("monitor").value;
+            let procesador = document.getElementById("procesador").value;
+            let presupuesto = parseInt(disco_duro) + parseInt(monitor) + parseInt(procesador);
+            let texto = document.getElementById("texto");
+            let data = document.createTextNode(`Presupuesto: $${presupuesto}`);
+
+            if (texto.hasChildNodes()){
+                texto.removeChild(texto.firstChild)
+            };
+            
+            texto.appendChild(data);
+        };
     </script>
 </body>
 </html>

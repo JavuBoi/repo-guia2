@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicio 16</title>
 </head>
+
 <body>
+    <form action="">
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" id="nombre"> <br>
+        <label for="contra">Contraseña</label>
+        <input type="password" name="contra" id="contra">
+    </form>
 
-    
     <script>
+        let contra = document.getElementById("contra");
 
+        contra.onblur = function(){
+            if (contra.value.length < 7) {
+            alert("La contraseña tiene menos de 7 caracteres.");
+        } else if (contra.value.length > 20) {
+            alert("La contraseña tiene más de 20 caracteres.")
+        };
+    };
     </script>
 </body>
+
 </html>

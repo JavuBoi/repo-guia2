@@ -7,10 +7,23 @@
     <title>Ejercicio 19</title>
 </head>
 <body>
-
+    <form action="">
+        <label for="check">Confirma los términos y condiciones?</label>
+        <input type="checkbox" name="check" id="check" onclick="confirmar()"> <br>
+        <button disabled="disabled" id="btn">Continuar</button>
+    </form>
     
     <script>
+        function confirmar(){
+            let check = document.getElementById("check");
+            let btn = document.getElementById("btn");
 
+            if (check.checked){
+                btn.disabled = false;
+            }else {
+                btn.disabled = true;
+            };
+        };
     </script>
 </body>
 </html>

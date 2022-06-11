@@ -1,16 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html {
+            font: 1rem 'Fira Sans', sans-serif;
+        }
+
+        .game button {
+            margin: 0.2em;
+            padding: 30px;
+        }
+    </style>
     <title>Ejercicio 20</title>
 </head>
+
 <body>
+    <div class="game">
+        <button id="0" class="game-btn" onclick="play(this);">-</button>&nbsp;<button id="1" class="game-btn" onclick="play(this);">-</button>&nbsp;<button id="2" class="game-btn" onclick="play(this);">-</button> <br>
+        <button id="3" class="game-btn" onclick="play(this);">-</button>&nbsp;<button id="4" class="game-btn" onclick="play(this);">-</button>&nbsp;<button id="5" class="game-btn" onclick="play(this);">-</button> <br>
+        <button id="6" class="game-btn" onclick="play(this);">-</button>&nbsp;<button id="7" class="game-btn" onclick="play(this);">-</button>&nbsp;<button id="8" class="game-btn" onclick="play(this);">-</button>
+    </div>
 
-    
     <script>
+        window.onload = function() {
+            sessionStorage.setItem("turn", 0);
+        };
 
+        function victory(icon) {
+            let turn = sessionStorage.getItem("turn");
+            let btn0 = document.getElementById("0").textContent;
+            let btn1 = document.getElementById("1").textContent;
+            let btn2 = document.getElementById("2").textContent;
+            let btn3 = document.getElementById("3").textContent;
+            let btn4 = document.getElementById("4").textContent;
+            let btn5 = document.getElementById("5").textContent;
+            let btn6 = document.getElementById("6").textContent;
+            let btn7 = document.getElementById("7").textContent;
+            let btn8 = document.getElementById("8").textContent;
+
+            const isIcon = (mark) => mark == icon; 
+
+            let row1 = [btn0, btn1, btn2].every(isIcon);
+            let row2 = [btn3, btn4, btn5].every(isIcon);
+            let row3 = [btn6, btn7, btn8].every(isIcon);
+            let col1 = [btn0, btn3, btn6].every(isIcon);
+            let col2 = [btn1, btn4, btn7].every(isIcon);
+            let col3 = [btn2, btn5, btn8].every(isIcon);
+            let dia1 = [btn0, btn4, btn8].every(isIcon);
+            let dia2 = [btn6, btn4, btn2].every(isIcon);
+
+            if (row1 || row2 || row3 || col1 || col2 || col3 || dia1 || dia2) {
+                alert(`GANA ${icon}`);
+                location.reload();
+            }else if (parseInt(turn) == 9) {
+                alert("EMPATE");
+                location.reload()
+            };
+        };
+
+        function play(btn) {
+            let turn = parseInt(sessionStorage.getItem("turn"));
+            btn.disabled = true;
+
+            if (turn % 2 == 0) {
+                var icon = "X";
+            }else {
+                var icon = "O";
+            };
+
+            btn.textContent = icon
+            sessionStorage.setItem("turn", turn + 1)
+
+            victory(icon)
+        };
     </script>
 </body>
+
 </html>
